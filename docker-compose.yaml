@@ -32,16 +32,16 @@ services:
     - '8082:8082'
     - '8083:8083'
 
-  # consumer-logger:
-  #   build:
-  #     context: consumer-logger
-  #   environment:
-  #     kafkaURL: kafka:9092
-  #     topic: topic1
-  #     GroupID: logger-group
-  #   depends_on: 
-  #   - kafka
-  #   restart: always
+  consumer-logger:
+    build:
+      context: consumer-logger
+    environment:
+      kafkaURL: kafka:9092
+      topic: topic1
+      GroupID: logger-group
+    depends_on: 
+    - kafka
+    restart: always
   
   # consumer-logger2:
   #   build:
@@ -55,27 +55,27 @@ services:
   #   restart: always
 
 
-  # producer-random:
-  #   build:
-  #     context: producer-random
-  #   environment:
-  #     kafkaURL: kafka:9092
-  #     topic: topic1
-  #   depends_on: 
-  #   - kafka
+  producer-random:
+    build:
+      context: producer-random
+    environment:
+      kafkaURL: kafka:9092
+      topic: topic1
+    depends_on: 
+    - kafka
   
-  # producer-api:
-  #   build:
-  #     context: producer-api
-  #   environment:
-  #     kafkaURL: kafka:9092
-  #     topic: topic1
-  #   expose:
-  #   - "8080"
-  #   ports:
-  #   - "8080:8080"
-  #   depends_on: 
-  #   - kafka
+  producer-api:
+    build:
+      context: producer-api
+    environment:
+      kafkaURL: kafka:9092
+      topic: topic1
+    expose:
+    - "8080"
+    ports:
+    - "8080:8080"
+    depends_on: 
+    - kafka
   
   # SARAMA APPS
   producer-sarama:
@@ -96,16 +96,16 @@ services:
     - kafka
     restart: always
   
-  consumer-sarama2:
-    build:
-      context: consumer-sarama
-    depends_on: 
-    - kafka
-    restart: always
+  # consumer-sarama2:
+  #   build:
+  #     context: consumer-sarama
+  #   depends_on: 
+  #   - kafka
+  #   restart: always
 
-  consumer-sarama3:
-    build:
-      context: consumer-sarama
-    depends_on: 
-    - kafka
-    restart: always
+  # consumer-sarama3:
+  #   build:
+  #     context: consumer-sarama
+  #   depends_on: 
+  #   - kafka
+  #   restart: always
