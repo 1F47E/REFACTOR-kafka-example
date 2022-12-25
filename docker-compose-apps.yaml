@@ -1,0 +1,14 @@
+version: '2.3'
+services:
+
+
+  producer-sarama:
+    build:
+      context: producer-sarama
+    expose:
+    - "8080"
+    ports:
+    - "8080:8080"
+  consumer-sarama:
+    build:
+      context: consumer-sarama
